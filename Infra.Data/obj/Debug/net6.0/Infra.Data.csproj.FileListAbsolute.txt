@@ -1,0 +1,17 @@
+D:\Afarinesh\CheckSystemUpdate\Infra.Data\bin\Debug\net6.0\Infra.Data.deps.json
+D:\Afarinesh\CheckSystemUpdate\Infra.Data\bin\Debug\net6.0\Infra.Data.runtimeconfig.json
+D:\Afarinesh\CheckSystemUpdate\Infra.Data\bin\Debug\net6.0\Infra.Data.dll
+D:\Afarinesh\CheckSystemUpdate\Infra.Data\bin\Debug\net6.0\Infra.Data.pdb
+D:\Afarinesh\CheckSystemUpdate\Infra.Data\bin\Debug\net6.0\Domain.dll
+D:\Afarinesh\CheckSystemUpdate\Infra.Data\bin\Debug\net6.0\Domain.pdb
+D:\Afarinesh\CheckSystemUpdate\Infra.Data\obj\Debug\net6.0\Infra.Data.csproj.AssemblyReference.cache
+D:\Afarinesh\CheckSystemUpdate\Infra.Data\obj\Debug\net6.0\Infra.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\Afarinesh\CheckSystemUpdate\Infra.Data\obj\Debug\net6.0\Infra.Data.AssemblyInfoInputs.cache
+D:\Afarinesh\CheckSystemUpdate\Infra.Data\obj\Debug\net6.0\Infra.Data.AssemblyInfo.cs
+D:\Afarinesh\CheckSystemUpdate\Infra.Data\obj\Debug\net6.0\Infra.Data.csproj.CoreCompileInputs.cache
+D:\Afarinesh\CheckSystemUpdate\Infra.Data\obj\Debug\net6.0\Infra.Data.csproj.CopyComplete
+D:\Afarinesh\CheckSystemUpdate\Infra.Data\obj\Debug\net6.0\Infra.Data.dll
+D:\Afarinesh\CheckSystemUpdate\Infra.Data\obj\Debug\net6.0\refint\Infra.Data.dll
+D:\Afarinesh\CheckSystemUpdate\Infra.Data\obj\Debug\net6.0\Infra.Data.pdb
+D:\Afarinesh\CheckSystemUpdate\Infra.Data\obj\Debug\net6.0\Infra.Data.genruntimeconfig.cache
+D:\Afarinesh\CheckSystemUpdate\Infra.Data\obj\Debug\net6.0\ref\Infra.Data.dll
