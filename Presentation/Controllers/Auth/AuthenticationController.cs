@@ -12,49 +12,47 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Presentation.Controllers.Auth
 {
-    public class AuthenticationController
-    {
-          [Route("api/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class AuthenticateController : ControllerBase
+    public class AuthenticationController : ControllerBase
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManger;
         private readonly IConfiguration _configuration;
 
-        
-        public AuthenticateController (
+
+        public AuthenticationController(
 
             UserManager<IdentityUser> userManager,
             RoleManager<IdentityRole> roleManager,
-            IConfiguration configuration    
+            IConfiguration configuration
             )
         {
             _userManager = userManager;
             _roleManger = roleManager;
             _configuration = configuration;
         }
-        
+
         #region Login
-        
+
         [HttpPost]
         [Route("login")]
-        
+
         public async Task<IActionResult> Login([FromBody] LoginModels model)
         {
-           var user = await _userManager.FindByNameAsync(model.Username);
+            var user = await _userManager.FindByNameAsync(model.Username);
             if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
             {
                 var userRoles = await _userManager.GetRolesAsync(user);
 
                 var authClaims = new List<Claim>
                 {
-                    
+
                     new Claim(ClaimTypes.Name, user.UserName),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                     new Claim("FirstAccesslevel",Boolean.TrueString),
                     new Claim("SecondAccesslevel", Boolean.TrueString),
-                    
+
                 };
 
                 foreach (var userRole in userRoles)
@@ -62,7 +60,7 @@ namespace Presentation.Controllers.Auth
                     authClaims.Add(new Claim(ClaimTypes.Role, userRole));
                 }
 
-               var token = GetToken(authClaims);
+                var token = GetToken(authClaims);
 
                 return Ok(new
                 {
@@ -78,7 +76,7 @@ namespace Presentation.Controllers.Auth
         #region register
         [HttpPost]
         [Route("register")]
-        
+
         public async Task<IActionResult> Register([FromBody] RegisterModels model)
         {
             var userExists = await _userManager.FindByNameAsync(model.Username);
@@ -95,22 +93,22 @@ namespace Presentation.Controllers.Auth
             if (!result.Succeeded)
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User creation failed! Please check user details and try again." });
 
-            return Ok(new Response { Status = "Success", Message = "User created successfully!" }); 
+            return Ok(new Response { Status = "Success", Message = "User created successfully!" });
         }
-        
+
         #endregion
-        
-        
+
+
         #region register-admin
-        
+
         [HttpPost]
         [Route("register-admin")]
         public async Task<IActionResult> RegisterAdmin([FromBody] RegisterModels model)
         {
             var userExists = await _userManager.FindByNameAsync(model.Username);
 
-            if(userExists != null) return StatusCode(StatusCodes.Status500InternalServerError
-            , new Response {Status="Error", Message= "User Already Exists!"});
+            if (userExists != null) return StatusCode(StatusCodes.Status500InternalServerError
+            , new Response { Status = "Error", Message = "User Already Exists!" });
 
             IdentityUser user = new()
             {
@@ -119,15 +117,15 @@ namespace Presentation.Controllers.Auth
                 UserName = model.Username
             };
             var result = await _userManager.CreateAsync(user, model.Password);
-            
-            if(!result.Succeeded) return StatusCode(StatusCodes.Status500InternalServerError,
-            new Response {Status="Error", Message="User creation failed! Please check user details and try again."});
 
-            if (!await _roleManger.RoleExistsAsync(UserRoles.Admin)) 
-            await _roleManger.CreateAsync(new IdentityRole(UserRoles.Admin));
+            if (!result.Succeeded) return StatusCode(StatusCodes.Status500InternalServerError,
+            new Response { Status = "Error", Message = "User creation failed! Please check user details and try again." });
 
-            if(!await _roleManger.RoleExistsAsync(UserRoles.User))
-            await _roleManger.CreateAsync(new IdentityRole(UserRoles.User));
+            if (!await _roleManger.RoleExistsAsync(UserRoles.Admin))
+                await _roleManger.CreateAsync(new IdentityRole(UserRoles.Admin));
+
+            if (!await _roleManger.RoleExistsAsync(UserRoles.User))
+                await _roleManger.CreateAsync(new IdentityRole(UserRoles.User));
 
             if (await _roleManger.RoleExistsAsync(UserRoles.Admin))
             {
@@ -140,25 +138,24 @@ namespace Presentation.Controllers.Auth
             return Ok(new Response { Status = "Success", Message = "User created successfully!" });
         }
 
-         
-            #endregion
+
+        #endregion
 
 
 
-            private JwtSecurityToken GetToken(List<Claim> authClaims)
-    {
-        var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]));
-        var token = new JwtSecurityToken
-        (
-            issuer: _configuration["JWT:ValidIssuer"],
-            audience: _configuration["JWT:ValidAudience"],
-            expires: DateTime.Now.AddHours(3),
-            claims: authClaims,
-            signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
-        );
-        return token;
-    }
-        
-    } 
+        private JwtSecurityToken GetToken(List<Claim> authClaims)
+        {
+            var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]));
+            var token = new JwtSecurityToken
+            (
+                issuer: _configuration["JWT:ValidIssuer"],
+                audience: _configuration["JWT:ValidAudience"],
+                expires: DateTime.Now.AddHours(3),
+                claims: authClaims,
+                signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
+            );
+            return token;
+        }
+
     }
 }

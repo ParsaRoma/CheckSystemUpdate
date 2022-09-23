@@ -73,3 +73,7 @@ D:\Afarinesh\CheckSystemUpdate\Presentation\bin\Debug\net6.0\Infra.Data.dll
 D:\Afarinesh\CheckSystemUpdate\Presentation\bin\Debug\net6.0\Application.pdb
 D:\Afarinesh\CheckSystemUpdate\Presentation\bin\Debug\net6.0\Domain.pdb
 D:\Afarinesh\CheckSystemUpdate\Presentation\bin\Debug\net6.0\Infra.Data.pdb
+D:\Afarinesh\CheckSystemUpdate\Presentation\bin\Debug\net6.0\Mapster.dll
+D:\Afarinesh\CheckSystemUpdate\Presentation\bin\Debug\net6.0\AutoMapper.dll
+D:\Afarinesh\CheckSystemUpdate\Presentation\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\Afarinesh\CheckSystemUpdate\Presentation\bin\Debug\net6.0\Mapster.DependencyInjection.dll

@@ -10,3 +10,8 @@ D:\Afarinesh\CheckSystemUpdate\Application\obj\Debug\net6.0\Application.dll
 D:\Afarinesh\CheckSystemUpdate\Application\obj\Debug\net6.0\refint\Application.dll
 D:\Afarinesh\CheckSystemUpdate\Application\obj\Debug\net6.0\Application.pdb
 D:\Afarinesh\CheckSystemUpdate\Application\obj\Debug\net6.0\ref\Application.dll
+D:\Afarinesh\CheckSystemUpdate\Application\bin\Debug\net6.0\Domain.dll
+D:\Afarinesh\CheckSystemUpdate\Application\bin\Debug\net6.0\Infra.Data.dll
+D:\Afarinesh\CheckSystemUpdate\Application\bin\Debug\net6.0\Infra.Data.pdb
+D:\Afarinesh\CheckSystemUpdate\Application\bin\Debug\net6.0\Domain.pdb
+D:\Afarinesh\CheckSystemUpdate\Application\obj\Debug\net6.0\Application.csproj.CopyComplete

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Domain.Models.MainModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -16,7 +17,11 @@ namespace Infra.Data.Context
         {
 
         }
-       
+
+        public ApplicationDbContext()
+        {
+        }
+
         public ApplicationDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
@@ -31,9 +36,10 @@ namespace Infra.Data.Context
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-
+        base.OnModelCreating(builder);
         }
 
-
+    public DbSet<Users> users { get; set; }
+    public DbSet<OsInfo> osInfos { get; set; }
     }
 }

@@ -1,5 +1,10 @@
 using System.Text;
+using Application.Interfaces;
+using Application.Services;
+using Domain.Interfaces;
 using Infra.Data.Context;
+using Infra.Data.UnitOfWork;
+using MapsterMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +23,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+
 //Add Dbcontext
 builder.Services.AddEntityFrameworkSqlServer()
 .AddDbContext<ApplicationDbContext>(options => 
@@ -26,14 +33,21 @@ builder.Services.AddEntityFrameworkSqlServer()
 );
 
 #region ApplicationServices
+builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IVersionCheck, VersionCheck>();
+builder.Services.AddScoped<IMapper, Mapper>();
 
 #endregion
+
+//Add Mapster 
+
 
 #region Authenticatin && Authorization
 // For Identity
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 .AddEntityFrameworkStores<ApplicationDbContext>()
 .AddDefaultTokenProviders();
+
 // Adding Authentication
 builder.Services.AddAuthentication(options =>
 {
@@ -75,7 +89,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(); 
 }
 else
 {
@@ -92,7 +106,7 @@ app.UseRouting();
 // app.UseRequestLocalization();
 // app.UseCors();
 app.UseAuthentication();
-app.UseAuthorization();
+app.UseAuthorization(); 
 
 app.UseEndpoints(endpoints =>
 {

@@ -27,7 +27,14 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\Afarinesh\\CheckSystemUpdate\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\Afarinesh\\CheckSystemUpdate\\Domain\\Domain.csproj"
+              },
+              "D:\\Afarinesh\\CheckSystemUpdate\\Infra.Data\\Infra.Data.csproj": {
+                "projectPath": "D:\\Afarinesh\\CheckSystemUpdate\\Infra.Data\\Infra.Data.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -168,6 +175,18 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[11.0.0, )"
+            },
+            "Mapster": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Mapster.DependencyInjection": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
             "Microsoft.AspNetCore.Identity": {
               "target": "Package",
               "version": "[2.1.31, )"
@@ -262,6 +281,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Mapster": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Mapster.DependencyInjection": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[6.0.8, )"
